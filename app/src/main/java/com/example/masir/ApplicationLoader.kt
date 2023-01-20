@@ -35,7 +35,7 @@ class ApplicationLoader : Application() {
         val myModules = module {
             single { ApiService().api }
             single { RoomDB.getDataBase(this@ApplicationLoader) }
-            single { SharedUserVM(UserRepositoryImpl(RemoteUserDataSourceImpl(get()), LocalUserDataSourceImpl(get()))) }
+            factory { SharedUserVM(UserRepositoryImpl(RemoteUserDataSourceImpl(get()), LocalUserDataSourceImpl(get()))) }
         }
 
         /** 2- Start Coin By Modules... */

@@ -10,9 +10,7 @@ import com.example.masir.model.User
 import com.example.masir.ui.main.feachers.user.SharedUserVM
 import com.example.masir.ui.main.feachers.user.details.follow_lists.UserDetailsFragment
 import com.example.masir.utility.BaseFragmentByVM
-import com.example.masir.utility.extentions.hide
-import com.example.masir.utility.extentions.onBackClick
-import com.example.masir.utility.extentions.show
+import com.example.masir.utility.extentions.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainFragment : BaseFragmentByVM<FragmentMainBinding, SharedUserVM>(), UsersAdapter.OnUserCallBacks {
@@ -27,7 +25,9 @@ class MainFragment : BaseFragmentByVM<FragmentMainBinding, SharedUserVM>(), User
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
 
             override fun onQueryTextSubmit(query: String): Boolean {
-                if (query.isNotEmpty()) viewModel.searchUser(query)
+                if (checkInternetConnection(requireContext())){
+                    if (query.isNotEmpty()) viewModel.searchUser(query)
+                }else showToast(requireContext(),"NO Internet Connection..!")
                 return false
             }
 

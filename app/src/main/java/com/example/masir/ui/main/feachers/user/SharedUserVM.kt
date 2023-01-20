@@ -16,6 +16,10 @@ import kotlinx.coroutines.launch
 
 class SharedUserVM(private val repository: UsersRepository) : BaseViewModel() {
 
+
+    var pageNumberFollowing = 1
+    var pageNumberFollowers = 1
+
     private val coroutineExceptionHandler = CoroutineExceptionHandler { _, throwable ->
         errorLiveData.postValue(arrayListOf(throwable.message.toString()))
         showProgress.value = false
@@ -37,8 +41,7 @@ class SharedUserVM(private val repository: UsersRepository) : BaseViewModel() {
     private val _targetUserRepo = MutableLiveData<List<GitHubRepositoryObj>>()
     val targetUserRepo = _targetUserRepo.toEvent()
 
-    private val _favoritesList = MutableLiveData<List<SingleUserObj>>()
-    val favoritesList = _favoritesList.toEvent()
+    val favoritesList = MutableLiveData<List<SingleUserObj>>()
 
 
     fun searchUser(userName : String){
@@ -113,7 +116,7 @@ class SharedUserVM(private val repository: UsersRepository) : BaseViewModel() {
         showProgress.value = true
         viewModelScope.launch(coroutineExceptionHandler)  {
             val fList = repository.getFavoritesList(page)
-            _favoritesList.value = fList
+            favoritesList.value = fList
             showProgress.value = false
         }
     }
@@ -139,7 +142,7 @@ class SharedUserVM(private val repository: UsersRepository) : BaseViewModel() {
         val targetUser = temps?.find { it.login == user.login }
         val index = temps?.indexOf(targetUser)
         if (index != null) temps.set(index,user)
-        _favoritesList.value = temps as ArrayList<SingleUserObj>?
+        favoritesList.value = temps as ArrayList<SingleUserObj>?
     }
 
     fun removeFavoriteOnLiveData(user: SingleUserObj){
@@ -147,7 +150,13 @@ class SharedUserVM(private val repository: UsersRepository) : BaseViewModel() {
         val targetUser = temps?.find { it.login == user.login }
         val index = temps?.indexOf(targetUser)
         if (index != null) temps.removeAt(index)
-        _favoritesList.value = temps as ArrayList<SingleUserObj>?
+        favoritesList.value = temps as ArrayList<SingleUserObj>?
+    }
+
+    fun addFavoriteOnLiveData(user: SingleUserObj){
+        val temps = favoritesList.value?.toMutableList()
+        temps?.add(user)
+        favoritesList.value = temps as ArrayList<SingleUserObj>?
     }
 
     fun stopLoading(){

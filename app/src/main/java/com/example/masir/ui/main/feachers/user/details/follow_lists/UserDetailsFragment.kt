@@ -2,12 +2,14 @@ package com.example.masir.ui.main.feachers.user.details.follow_lists
 
 import android.os.Bundle
 import android.view.View
+import androidx.fragment.app.FragmentPagerAdapter
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.masir.R
 import com.example.masir.databinding.FragmentUserDetailsBinding
 import com.example.masir.model.SingleUserObj
+import com.example.masir.model.User
 import com.example.masir.ui.main.feachers.user.SharedUserVM
 import com.example.masir.utility.BaseFragmentByVM
 import com.example.masir.utility.ToggleImageView
@@ -35,8 +37,9 @@ class UserDetailsFragment : BaseFragmentByVM<FragmentUserDetailsBinding, SharedU
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        adapter = ViewPagerAdapter(requireActivity().supportFragmentManager,this.lifecycle)
+        adapter = ViewPagerAdapter(requireActivity().supportFragmentManager,FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT)
         binding.viewPager.adapter = adapter
+        binding.tabLayout.setupWithViewPager(binding.viewPager)
         likeUiChange()
         this.onBackClick { findNavController().navigateUp() }
     }
@@ -54,14 +57,20 @@ class UserDetailsFragment : BaseFragmentByVM<FragmentUserDetailsBinding, SharedU
             override fun onChecked() {
                 if (targetUser != null)
                     viewModel.addFavorite(targetUser!!)
+                viewModel.addFavoriteOnLiveData(targetUser!!)
             }
 
             override fun onUnchecked() {
-                if (targetUser != null)
+                if (targetUser != null){
                     viewModel.removeFavorite(targetUser!!)
-                viewModel.removeFavoriteOnLiveData(targetUser!!)
+                    viewModel.removeFavoriteOnLiveData(targetUser!!)
+                }
+
             }
         })
+
+
+        binding.btnBack.setOnClickListener { findNavController().navigateUp() }
 
     }
 
@@ -69,16 +78,17 @@ class UserDetailsFragment : BaseFragmentByVM<FragmentUserDetailsBinding, SharedU
         super.registerObservers()
 
         viewModel.targetUserFollowers.observe(viewLifecycleOwner){
-//            adapter.addItems(it as ArrayList<User>)
+            adapter.addFragment(FollowListFragment().newInstance(it as ArrayList<User>, viewModel.pageNumberFollowing),"Follower")
         }
 
         viewModel.targetUserFollowing.observe(viewLifecycleOwner){
-//            adapter.addItems(it as ArrayList<User>)
+            adapter.addFragment(FollowListFragment().newInstance(it as ArrayList<User>, viewModel.pageNumberFollowers),"Following")
         }
 
         viewModel.singleUser.observe(viewLifecycleOwner){
             if (it != null) {
 
+                binding.btnBack.text = it.login
                 binding.tvUserName.apply {
                     text ="Username : ${it.login}"
                     visibility = View.VISIBLE
