@@ -37,7 +37,8 @@ class SharedUserVM(private val repository: UsersRepository) : BaseViewModel() {
     private val _targetUserRepo = MutableLiveData<List<GitHubRepositoryObj>>()
     val targetUserRepo = _targetUserRepo.toEvent()
 
-    val favoritesList = MutableLiveData<List<SingleUserObj>>()
+    private val _favoritesList = MutableLiveData<List<SingleUserObj>>()
+    val favoritesList = _favoritesList.toEvent()
 
 
     fun searchUser(userName : String){
@@ -52,6 +53,7 @@ class SharedUserVM(private val repository: UsersRepository) : BaseViewModel() {
     suspend fun getUserDetails(userName : String){
         showProgress.value = true
         viewModelScope.launch(coroutineExceptionHandler)  {
+
             val followersResult = async { repository.getAllFollowersList(userName) }
             val followingResult = async { repository.getAllFollowingsList(userName) }
             val repositoryResult = async { repository.getAllRepoList(userName) }
@@ -111,7 +113,7 @@ class SharedUserVM(private val repository: UsersRepository) : BaseViewModel() {
         showProgress.value = true
         viewModelScope.launch(coroutineExceptionHandler)  {
             val fList = repository.getFavoritesList(page)
-            favoritesList.value = fList
+            _favoritesList.value = fList
             showProgress.value = false
         }
     }
@@ -137,7 +139,7 @@ class SharedUserVM(private val repository: UsersRepository) : BaseViewModel() {
         val targetUser = temps?.find { it.login == user.login }
         val index = temps?.indexOf(targetUser)
         if (index != null) temps.set(index,user)
-        favoritesList.value = temps as ArrayList<SingleUserObj>?
+        _favoritesList.value = temps as ArrayList<SingleUserObj>?
     }
 
     fun removeFavoriteOnLiveData(user: SingleUserObj){
@@ -145,7 +147,7 @@ class SharedUserVM(private val repository: UsersRepository) : BaseViewModel() {
         val targetUser = temps?.find { it.login == user.login }
         val index = temps?.indexOf(targetUser)
         if (index != null) temps.removeAt(index)
-        favoritesList.value = temps as ArrayList<SingleUserObj>?
+        _favoritesList.value = temps as ArrayList<SingleUserObj>?
     }
 
     fun stopLoading(){

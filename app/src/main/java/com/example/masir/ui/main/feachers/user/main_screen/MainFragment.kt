@@ -33,6 +33,7 @@ class MainFragment : BaseFragmentByVM<FragmentMainBinding, SharedUserVM>(), User
 
             override fun onQueryTextChange(newText: String?): Boolean {
                 adapter.clearList()
+                viewModel.stopLoading()
                 return false
             }
         })
