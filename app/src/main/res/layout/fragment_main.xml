@@ -28,10 +28,8 @@
                     android:layout_marginHorizontal="@dimen/space_16"
                     android:textStyle="bold"
                     android:textSize="@dimen/textSize_14"
-                    android:drawablePadding="@dimen/space_8"
                     android:contentDescription="@string/this_is_description"
-                    android:text="Favorite"
-                    app:drawableEndCompat="@drawable/ic_like_24" />
+                    android:text="Favorite" />
 
             </androidx.appcompat.widget.Toolbar>
 
@@ -42,7 +40,7 @@
                 android:layout_marginHorizontal="@dimen/space_16"
                 android:layout_marginBottom="@dimen/space_16"
                 android:background="@drawable/stroke_input"
-                app:queryHint="search a User .." />
+                app:queryHint="search user..." />
 
         </com.google.android.material.appbar.AppBarLayout>
 

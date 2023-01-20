@@ -2,10 +2,12 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/rootContainer"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:background="@color/background_color">
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
@@ -16,19 +18,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:theme="@style/Theme.Material3.Dark"
-                app:title="Favorites User"/>
+                app:title="Favorites User" />
 
         </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:layout_height="match_parent"
             android:orientation="vertical"
             android:padding="@dimen/space_16"
-            tools:listitem="@layout/item_favorite"
-            android:layout_height="match_parent"/>
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            tools:listitem="@layout/item_favorite" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

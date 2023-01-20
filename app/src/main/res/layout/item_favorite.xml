@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
@@ -25,6 +26,7 @@
                 android:id="@+id/iv_userCover"
                 android:layout_width="56dp"
                 android:layout_height="56dp"
+                android:layout_marginStart="@dimen/space_16"
                 android:layout_gravity="center_vertical"
                 android:layout_marginVertical="@dimen/space_16"
                 tools:src="@drawable/ic_outline_emoji_emotions_24" />
@@ -32,6 +34,7 @@
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingVertical="@dimen/space_8"
                 android:layout_gravity="center_vertical"
                 android:layout_marginHorizontal="@dimen/space_8"
                 android:layout_marginVertical="@dimen/space_8"
@@ -44,7 +47,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/textSize_16"
+                    android:textSize="@dimen/textSize_14"
                     android:text="@{data.name}"
                     android:textStyle="bold"
                     tools:text="IHasanAzimi" />
@@ -57,7 +60,7 @@
                     android:gravity="center"
                     android:text="@{data.location}"
                     android:textColor="@color/gary_darker"
-                    android:textSize="@dimen/textSize_14"
+                    android:textSize="@dimen/textSize_12"
                     tools:text="Tehran Province , Iran"
                     app:drawableStartCompat="@drawable/ic_baseline_location_on_24" />
 
@@ -69,7 +72,7 @@
                     android:gravity="center"
                     android:text="@{data.company}"
                     android:textColor="@color/gary_darker"
-                    android:textSize="@dimen/textSize_14"
+                    android:textSize="@dimen/textSize_12"
                     tools:text="Smart Land Solution"
                     app:drawableStartCompat="@drawable/baseline_apartment_24" />
 
@@ -77,7 +80,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingVertical="@dimen/space_4"
-                    android:layout_marginHorizontal="@dimen/iconSize_24"
+                    android:layout_marginHorizontal="@dimen/space_8"
                     android:orientation="horizontal">
 
                     <LinearLayout
@@ -89,7 +92,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:textSize="@dimen/textSize_12"
+                            android:textSize="@dimen/textSize_10"
                             android:textStyle="bold"
                             android:singleLine="true"
                             android:gravity="center"
@@ -101,8 +104,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textSize="@dimen/textSize_12"
-                            android:textStyle="bold"
-                            android:text="@{data.followers}"
+                            android:textStyle="normal"
+                            android:text="@{data.followers()}"
                             android:gravity="center"
                             android:textColor="@color/black"
                             tools:text="38"/>
@@ -118,7 +121,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:textSize="@dimen/textSize_12"
+                            android:textSize="@dimen/textSize_10"
                             android:textStyle="bold"
                             android:gravity="center"
                             android:singleLine="true"
@@ -130,8 +133,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textSize="@dimen/textSize_12"
-                            android:textStyle="bold"
-                            android:text="@{data.following}"
+                            android:textStyle="normal"
+                            android:text="@{data.following()}"
                             android:gravity="center"
                             android:textColor="@color/black"
                             tools:text="38"/>
@@ -147,7 +150,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:textSize="@dimen/textSize_12"
+                            android:textSize="@dimen/textSize_10"
                             android:textStyle="bold"
                             android:gravity="center"
                             android:singleLine="true"
@@ -159,9 +162,9 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textSize="@dimen/textSize_12"
-                            android:textStyle="bold"
+                            android:textStyle="normal"
                             android:gravity="center"
-                            android:text="@{data.public_repos}"
+                            android:text="@{data.publicRepos()}"
                             android:textColor="@color/black"
                             tools:text="38"/>
 
