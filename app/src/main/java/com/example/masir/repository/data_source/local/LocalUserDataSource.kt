@@ -5,7 +5,7 @@ import com.example.masir.model.User
 
 interface LocalUserDataSource {
 
-    fun getFavoritesList(page : Int) : List<SingleUserObj>
+    fun getFavoritesList(page : Int) : ArrayList<SingleUserObj>
     fun addFavorite(user : SingleUserObj)
     fun updateFavorite(user : SingleUserObj)
     fun deleteFavorite(user : SingleUserObj)

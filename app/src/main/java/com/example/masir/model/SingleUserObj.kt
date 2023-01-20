@@ -73,4 +73,12 @@ data class SingleUserObj(
     val updated_at: String="",
     @ColumnInfo(defaultValue = "")
     val url: String=""
-) : java.io.Serializable
+) : java.io.Serializable {
+
+
+    fun following() = "$following"
+    fun followers() = "$followers"
+    fun publicRepos() = "$public_repos"
+
+
+}

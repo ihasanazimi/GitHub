@@ -2,12 +2,11 @@ package com.example.masir.repository.data_source.local
 
 import com.example.masir.db.RoomDB
 import com.example.masir.model.SingleUserObj
-import com.example.masir.model.User
 
 class LocalUserDataSourceImpl(private val db : RoomDB) : LocalUserDataSource{
 
-    override fun getFavoritesList(page : Int): List<SingleUserObj> {
-        return db.userDao().getFavoritesUserPaging(page)
+    override fun getFavoritesList(page: Int): ArrayList<SingleUserObj> {
+        return db.userDao().getFavoritesUserPaging(page) as ArrayList<SingleUserObj>
     }
 
     override fun addFavorite(user: SingleUserObj) {

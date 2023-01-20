@@ -102,9 +102,7 @@ class SharedUserVM(private val repository: UsersRepository) : BaseViewModel() {
         showProgress.value = true
         viewModelScope.launch(coroutineExceptionHandler)  {
             val fList = repository.getFavoritesList(page)
-            val temps = this@SharedUserVM.favoritesList.value?.toMutableList()
-            temps?.addAll(fList)
-            favoritesList.value = temps!!
+            favoritesList.value = fList
             showProgress.value = false
         }
     }
