@@ -148,4 +148,13 @@ class SharedUserVM(private val repository: UsersRepository) : BaseViewModel() {
         favoritesList.value = temps as ArrayList<SingleUserObj>?
     }
 
+    fun stopLoading(){
+        showProgress.value = false
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        stopLoading()
+    }
+
 }

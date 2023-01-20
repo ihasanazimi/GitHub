@@ -23,11 +23,9 @@ class MainFragment : BaseFragmentByVM<FragmentMainBinding, SharedUserVM>(), User
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        adapter = UsersAdapter(this)
-        binding.recyclerView.adapter = adapter
-
+        recyclerViewConfig()
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+
             override fun onQueryTextSubmit(query: String): Boolean {
                 if (query.isNotEmpty()) viewModel.searchUser(query)
                 return false
@@ -38,8 +36,12 @@ class MainFragment : BaseFragmentByVM<FragmentMainBinding, SharedUserVM>(), User
                 return false
             }
         })
-
         this.onBackClick { mainHelper.finish() }
+    }
+
+    private fun recyclerViewConfig() {
+        adapter = UsersAdapter(this)
+        binding.recyclerView.adapter = adapter
     }
 
     override fun viewClickEvents() {
@@ -47,12 +49,11 @@ class MainFragment : BaseFragmentByVM<FragmentMainBinding, SharedUserVM>(), User
         binding.searchView.setOnCloseListener {
             adapter.clearList()
             binding.notFoundImage.show()
+            viewModel.stopLoading()
             return@setOnCloseListener false
         }
 
-        binding.btnFavorites.setOnClickListener{
-            findNavController().navigate(R.id.action_mainFragment_to_favoritesListFragment)
-        }
+        binding.btnFavorites.setOnClickListener{ findNavController().navigate(R.id.action_mainFragment_to_favoritesListFragment) }
     }
 
     override fun registerObservers() {
@@ -75,6 +76,12 @@ class MainFragment : BaseFragmentByVM<FragmentMainBinding, SharedUserVM>(), User
         val bundle = Bundle()
         bundle.putString(UserDetailsFragment.LOGIN_KEY,model.login)
         findNavController().navigate(R.id.action_mainFragment_to_userDetailsFragment,bundle)
+    }
+
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        viewModel.stopLoading()
     }
 
 

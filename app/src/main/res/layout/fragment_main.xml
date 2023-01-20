@@ -11,19 +11,34 @@
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
+            android:fitsSystemWindows="true"
             android:layout_height="wrap_content">
 
-            <androidx.appcompat.widget.Toolbar
+            <FrameLayout
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                app:layout_scrollFlags="scroll|enterAlways"
+                android:layout_height="?actionBarSize"
                 android:theme="@style/Theme.Material3.Dark"
                 app:title="GitHub User">
 
                 <TextView
+                    android:id="@+id/btn_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_gravity="start|center_vertical"
+                    android:layout_marginHorizontal="@dimen/iconSize_24"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/textSize_18"
+                    android:contentDescription="@string/this_is_description"
+                    android:text="@string/app_name" />
+
+                <TextView
                     android:id="@+id/btn_favorites"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
                     android:layout_gravity="end|center_vertical"
                     android:layout_marginHorizontal="@dimen/space_16"
                     android:textStyle="bold"
@@ -31,14 +46,14 @@
                     android:contentDescription="@string/this_is_description"
                     android:text="Favorite" />
 
-            </androidx.appcompat.widget.Toolbar>
+            </FrameLayout>
 
             <androidx.appcompat.widget.SearchView
                 android:id="@+id/searchView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/space_16"
-                android:layout_marginBottom="@dimen/space_16"
+                android:layout_marginHorizontal="@dimen/space_8"
+                android:layout_marginVertical="@dimen/space_8"
                 android:background="@drawable/stroke_input"
                 app:queryHint="search user..." />
 

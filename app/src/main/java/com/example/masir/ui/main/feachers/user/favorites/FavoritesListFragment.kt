@@ -34,11 +34,7 @@ class FavoritesListFragment : BaseFragmentByVM<FragmentFavoritesListBinding, Sha
 
     override fun registerObservers() {
         super.registerObservers()
-
-        viewModel.favoritesList.observe(viewLifecycleOwner){
-            adapter.setItemByDiffUtil(it)
-        }
-
+        viewModel.favoritesList.observe(viewLifecycleOwner){ adapter.setItemByDiffUtil(it) }
     }
 
     override fun onItemClick(model: SingleUserObj) {
