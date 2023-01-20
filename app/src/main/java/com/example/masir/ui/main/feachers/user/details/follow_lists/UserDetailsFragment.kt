@@ -63,6 +63,9 @@ class UserDetailsFragment : BaseFragmentByVM<FragmentUserDetailsBinding, SharedU
             }
         })
 
+
+        binding.btnBack.setOnClickListener { findNavController().navigateUp() }
+
     }
 
     override fun registerObservers() {

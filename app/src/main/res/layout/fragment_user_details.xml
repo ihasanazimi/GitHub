@@ -15,12 +15,27 @@
             android:layout_height="wrap_content"
             app:liftOnScroll="true">
 
-            <androidx.appcompat.widget.Toolbar
+            <FrameLayout
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                app:layout_scrollFlags="scroll|enterAlways"
+                android:layout_height="?actionBarSize"
                 android:theme="@style/Theme.Material3.Dark"
                 app:title="GitHub User">
+
+                <TextView
+                    android:id="@+id/btn_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_gravity="start|center_vertical"
+                    android:layout_marginHorizontal="@dimen/space_16"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/textSize_18"
+                    android:contentDescription="@string/this_is_description"
+                    android:text="@string/app_name"
+                    android:drawablePadding="@dimen/space_8"
+                    app:drawableStartCompat="@drawable/baseline_arrow_back_24" />
 
                 <com.example.masir.utility.ToggleImageView
                     android:id="@+id/toggle_favorites"
@@ -32,7 +47,8 @@
                     app:src_checked="@drawable/ic_like_24"
                     app:src_unchecked="@drawable/ic_like_border_24" />
 
-            </androidx.appcompat.widget.Toolbar>
+            </FrameLayout>
+
 
             <com.google.android.material.appbar.CollapsingToolbarLayout
                 android:layout_width="match_parent"
