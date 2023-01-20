@@ -6,6 +6,7 @@ import com.example.masir.model.SingleUserObj
 import com.example.masir.model.User
 import com.example.masir.repository.data_source.local.LocalUserDataSourceImpl
 import com.example.masir.repository.data_source.remote.RemoteUserDataSourceImpl
+import kotlin.math.log
 
 class UserRepositoryImpl(private val remoteRepo : RemoteUserDataSourceImpl, private val localRepo : LocalUserDataSourceImpl) : UsersRepository {
 
@@ -25,8 +26,12 @@ class UserRepositoryImpl(private val remoteRepo : RemoteUserDataSourceImpl, priv
         return localRepo.getFavoritesList(page)
     }
 
-    override suspend fun getSingleUser(userName: String): SingleUserObj {
-        return remoteRepo.getSingleUser(userName)
+    override suspend fun getSingleUser(login: String): SingleUserObj {
+        return remoteRepo.getSingleUser(login)
+    }
+
+    override suspend fun getSingleUserExist(login: String): SingleUserObj {
+        return localRepo.getSingleUser(login)
     }
 
     override suspend fun searchUser(userName: String): SearchResultWidget {

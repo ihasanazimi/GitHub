@@ -9,6 +9,10 @@ class LocalUserDataSourceImpl(private val db : RoomDB) : LocalUserDataSource{
         return db.userDao().getFavoritesUserPaging(page) as ArrayList<SingleUserObj>
     }
 
+    override fun getSingleUser(login: String): SingleUserObj {
+        return db.userDao().getSingleUser(login)
+    }
+
     override fun addFavorite(user: SingleUserObj) {
         db.userDao().insertUser(user)
     }

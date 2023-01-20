@@ -5,11 +5,9 @@ import android.view.View
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.masir.R
 import com.example.masir.databinding.FragmentUserDetailsBinding
 import com.example.masir.model.SingleUserObj
-import com.example.masir.model.User
 import com.example.masir.ui.main.feachers.user.SharedUserVM
 import com.example.masir.utility.BaseFragmentByVM
 import com.example.masir.utility.ToggleImageView
@@ -26,8 +24,8 @@ class UserDetailsFragment : BaseFragmentByVM<FragmentUserDetailsBinding, SharedU
     }
 
     private lateinit var adapter: ViewPagerAdapter
-    private var login = ""
     private var targetUser : SingleUserObj ? = null
+    private var login : String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,15 +35,21 @@ class UserDetailsFragment : BaseFragmentByVM<FragmentUserDetailsBinding, SharedU
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         adapter = ViewPagerAdapter(requireActivity().supportFragmentManager,this.lifecycle)
         binding.viewPager.adapter = adapter
-
+        likeUiChange()
         this.onBackClick { findNavController().navigateUp() }
+    }
+
+    private fun likeUiChange() {
+        val checkState = viewModel.isSaved(login)
+        if (checkState) binding.toggleFavorites.setChecked()
+        else binding.toggleFavorites.setUnchecked()
     }
 
 
     override fun viewClickEvents() {
+
         binding.toggleFavorites.addStateListener(object : ToggleImageView.OnStateChangedListener{
             override fun onChecked() {
                 if (targetUser != null)
@@ -55,8 +59,10 @@ class UserDetailsFragment : BaseFragmentByVM<FragmentUserDetailsBinding, SharedU
             override fun onUnchecked() {
                 if (targetUser != null)
                     viewModel.removeFavorite(targetUser!!)
+                viewModel.removeFavoriteOnLiveData(targetUser!!)
             }
         })
+
     }
 
     override fun registerObservers() {
@@ -78,21 +84,21 @@ class UserDetailsFragment : BaseFragmentByVM<FragmentUserDetailsBinding, SharedU
                     visibility = View.VISIBLE
                 }
 
-                if (it.name.isNotEmpty()){
+                if (!it.name.isNullOrEmpty()){
                     binding.tvUserFullName.apply {
                         text = it.name
                         visibility = View.VISIBLE
                     }
                 }
 
-                if (it.bio.isNotEmpty()) {
+                if (!it.bio.isNullOrEmpty()) {
                     binding.tvBio.apply {
                         text = "Bio : ${it.bio}"
                         visibility = View.VISIBLE
                     }
                 }
 
-                if (it.location.isNotEmpty()) {
+                if (!it.location.isNullOrEmpty()) {
                     binding.tvLocation.apply {
                         text = "${it.location}"
                         visibility = View.VISIBLE

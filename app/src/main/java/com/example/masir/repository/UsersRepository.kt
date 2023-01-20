@@ -11,7 +11,8 @@ interface UsersRepository {
     suspend fun getAllFollowingsList(userName : String): List<User>
     suspend fun getAllRepoList(userName : String): List<GitHubRepositoryObj>
     fun getFavoritesList(page : Int) : List<SingleUserObj>
-    suspend fun getSingleUser(userName: String) : SingleUserObj
+    suspend fun getSingleUser(login: String) : SingleUserObj
+    suspend fun getSingleUserExist(login: String) : SingleUserObj
     suspend fun searchUser(userName : String) : SearchResultWidget
     fun addFavorite(user : SingleUserObj)
     fun updateFavorite(user : SingleUserObj)

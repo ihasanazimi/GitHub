@@ -7,6 +7,7 @@ import com.example.masir.R
 import com.example.masir.databinding.FragmentFavoritesListBinding
 import com.example.masir.model.SingleUserObj
 import com.example.masir.ui.main.feachers.user.SharedUserVM
+import com.example.masir.ui.main.feachers.user.details.follow_lists.UserDetailsFragment
 import com.example.masir.utility.BaseFragmentByVM
 import com.example.masir.utility.extentions.onBackClick
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -41,7 +42,9 @@ class FavoritesListFragment : BaseFragmentByVM<FragmentFavoritesListBinding, Sha
     }
 
     override fun onItemClick(model: SingleUserObj) {
-
+        val bundle = Bundle()
+        bundle.putString(UserDetailsFragment.LOGIN_KEY,model.login)
+        findNavController().navigate(R.id.action_favoritesListFragment_to_userDetailsFragment,bundle)
     }
 
 

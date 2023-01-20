@@ -71,6 +71,15 @@ class SharedUserVM(private val repository: UsersRepository) : BaseViewModel() {
         }
     }
 
+    fun isSaved(login: String) : Boolean{
+        var isSaved = false
+        viewModelScope.launch(coroutineExceptionHandler){
+            val obj = repository.getSingleUserExist(login)
+            isSaved = obj != null
+        }
+        return isSaved
+    }
+
     fun getAllFollowerOfUser(userName : String){
         showProgress.value = false
         viewModelScope.launch(coroutineExceptionHandler)  {
@@ -123,14 +132,20 @@ class SharedUserVM(private val repository: UsersRepository) : BaseViewModel() {
 
 
 
-//    fun updatePostOnLiveData(updatedPost: Post){
-//        showProgress.value = true
-//        val temps = _users.value?.toMutableList()
-//        val targetPost = temps?.find { it.id == updatedPost.id }
-//        val index = temps?.indexOf(targetPost)
-//        if (index != null) temps.set(index,updatedPost)
-//        _users.value = temps as ArrayList<Post>?
-//        showProgress.value = false
-//    }
+    fun updateFavoriteOnLiveData(user: SingleUserObj){
+        val temps = favoritesList.value?.toMutableList()
+        val targetUser = temps?.find { it.login == user.login }
+        val index = temps?.indexOf(targetUser)
+        if (index != null) temps.set(index,user)
+        favoritesList.value = temps as ArrayList<SingleUserObj>?
+    }
+
+    fun removeFavoriteOnLiveData(user: SingleUserObj){
+        val temps = favoritesList.value?.toMutableList()
+        val targetUser = temps?.find { it.login == user.login }
+        val index = temps?.indexOf(targetUser)
+        if (index != null) temps.removeAt(index)
+        favoritesList.value = temps as ArrayList<SingleUserObj>?
+    }
 
 }

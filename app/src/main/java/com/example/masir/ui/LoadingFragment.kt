@@ -2,6 +2,7 @@ package com.example.masir.ui
 
 import android.os.Bundle
 import android.view.View
+import androidx.navigation.fragment.findNavController
 import com.example.masir.R
 import com.example.masir.databinding.LoadingBarBinding
 import com.example.masir.utility.BaseFragment
@@ -15,8 +16,6 @@ class LoadingFragment : BaseFragment<LoadingBarBinding>() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        this.onBackClick {
-            return@onBackClick
-        }
+        this.onBackClick { findNavController().navigateUp() }
     }
 }

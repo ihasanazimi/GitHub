@@ -26,7 +26,15 @@
     <fragment
         android:id="@+id/favoritesListFragment"
         android:name="com.example.masir.ui.main.feachers.user.favorites.FavoritesListFragment"
-        android:label="FavoritesListFragment" />
+        android:label="FavoritesListFragment" >
+        <action
+            android:id="@+id/action_favoritesListFragment_to_userDetailsFragment"
+            app:destination="@id/userDetailsFragment"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left"
+            app:popEnterAnim="@anim/enter_from_left"
+            app:popExitAnim="@anim/exit_to_right"/>
+    </fragment>
     <fragment
         android:id="@+id/userDetailsFragment"
         android:name="com.example.masir.ui.main.feachers.user.details.follow_lists.UserDetailsFragment"

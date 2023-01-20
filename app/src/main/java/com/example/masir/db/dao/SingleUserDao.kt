@@ -18,6 +18,9 @@ interface SingleUserDao {
     @Query("SELECT * FROM SingleUserObj")
     fun getAllFavoritesUser() : List<SingleUserObj>
 
+    @Query("SELECT * FROM SingleUserObj WHERE login=:login;")
+    fun getSingleUser(login : String) : SingleUserObj
+
     @Delete
     fun deleteUser(singleUser: SingleUserObj) : Int
 
