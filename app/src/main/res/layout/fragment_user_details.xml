@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/rootContainer"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background_color"
+        android:orientation="vertical">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:liftOnScroll="true">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/Theme.Material3.Dark"
+                app:title="GitHub User">
+
+                <com.example.masir.utility.ToggleImageView
+                    android:id="@+id/toggle_favorites"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|center_vertical"
+                    android:layout_marginHorizontal="@dimen/space_16"
+                    android:contentDescription="@string/this_is_description"
+                    app:src_checked="@drawable/ic_like_24"
+                    app:src_unchecked="@drawable/ic_like_border_24" />
+
+            </androidx.appcompat.widget.Toolbar>
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingBottom="@dimen/textSize_16">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/iv_userCover"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:layout_gravity="center_horizontal"
+                        tools:src="@drawable/ic_outline_emoji_emotions_24" />
+
+                    <TextView
+                        android:id="@+id/tv_userFullName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="center"
+                        android:layout_marginTop="@dimen/space_8"
+                        android:paddingHorizontal="@dimen/space_8"
+                        android:paddingVertical="@dimen/space_4"
+                        android:singleLine="true"
+                        android:visibility="gone"
+                        tools:visibility="visible"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/textSize_16"
+                        android:textStyle="bold"
+                        tools:text="Hasan Azimi" />
+
+                    <TextView
+                        android:id="@+id/tv_userName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="center"
+                        android:paddingVertical="@dimen/space_4"
+                        android:paddingHorizontal="@dimen/space_8"
+                        android:singleLine="true"
+                        android:alpha="0.8"
+                        android:visibility="gone"
+                        tools:visibility="visible"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/textSize_14"
+                        tools:text="userName : ihasanazimi" />
+
+                    <TextView
+                        android:id="@+id/tv_bio"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="center"
+                        android:paddingVertical="@dimen/space_4"
+                        android:paddingHorizontal="@dimen/space_8"
+                        android:maxLines="3"
+                        android:alpha="0.6"
+                        android:visibility="gone"
+                        tools:visibility="visible"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/textSize_14"
+                        tools:text="i am the android developer" />
+
+                    <TextView
+                        android:id="@+id/tv_location"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="center"
+                        android:paddingVertical="@dimen/space_4"
+                        android:paddingHorizontal="@dimen/space_8"
+                        android:singleLine="true"
+                        android:drawablePadding="@dimen/space_8"
+                        android:visibility="gone"
+                        tools:visibility="visible"
+                        android:alpha="0.4"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/textSize_14"
+                        tools:text="Tehran Province , Iran"
+                        app:drawableStartCompat="@drawable/ic_baseline_location_on_24" />
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/space_32"
+                        android:layout_marginTop="@dimen/textSize_16"
+                        app:cardCornerRadius="@dimen/space_16">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingVertical="@dimen/space_8">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:singleLine="true"
+                                    android:paddingTop="@dimen/space_8"
+                                    android:text="Follower"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/textSize_12"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/followerCountTv"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:paddingVertical="@dimen/space_8"
+                                    android:text="38"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/textSize_12"
+                                    android:textStyle="bold" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:singleLine="true"
+                                    android:text="Following"
+                                    android:paddingTop="@dimen/space_8"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/textSize_12"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/followingCountTv"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:paddingVertical="@dimen/space_8"
+                                    android:text="38"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/textSize_12"
+                                    android:textStyle="bold" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:singleLine="true"
+                                    android:text="Repository"
+                                    android:paddingTop="@dimen/space_8"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/textSize_12"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/repositoryCountTv"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:paddingVertical="@dimen/space_8"
+                                    android:text="38"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/textSize_12"
+                                    android:textStyle="bold" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/purple_500" />
+
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/nestedScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/background_color"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/viewPager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</layout>

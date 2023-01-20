@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="data"
+            type="com.example.masir.model.User" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/space_8"
+        app:cardCornerRadius="@dimen/space_8">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/space_8">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/iv_userCover"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginVertical="@dimen/space_16"
+                tools:src="@drawable/ic_outline_emoji_emotions_24" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="wrap_content"
+                android:layout_marginHorizontal="@dimen/space_8"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="start|center_vertical"
+                    android:text="@{data.login}"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textSize_16"
+                    android:textStyle="bold"
+                    tools:text="this is user name" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="start|center_vertical"
+                    android:text="@{data.type}"
+                    android:textColor="@color/gary_darker"
+                    android:textSize="@dimen/textSize_14"
+                    tools:text="this is text sample" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </com.google.android.material.card.MaterialCardView>
+
+</layout>

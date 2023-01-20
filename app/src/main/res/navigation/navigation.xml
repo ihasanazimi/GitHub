@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.masir.ui.main.feachers.user.main_screen.MainFragment"
+        android:label="MainFragment" >
+        <action
+            android:id="@+id/action_mainFragment_to_favoritesListFragment"
+            app:destination="@id/favoritesListFragment"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left"
+            app:popEnterAnim="@anim/enter_from_left"
+            app:popExitAnim="@anim/exit_to_right"/>
+        <action
+            android:id="@+id/action_mainFragment_to_userDetailsFragment"
+            app:destination="@id/userDetailsFragment"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left"
+            app:popEnterAnim="@anim/enter_from_left"
+            app:popExitAnim="@anim/exit_to_right"/>
+    </fragment>
+    <fragment
+        android:id="@+id/favoritesListFragment"
+        android:name="com.example.masir.ui.main.feachers.user.favorites.FavoritesListFragment"
+        android:label="FavoritesListFragment" />
+    <fragment
+        android:id="@+id/userDetailsFragment"
+        android:name="com.example.masir.ui.main.feachers.user.details.follow_lists.UserDetailsFragment"
+        android:label="UserDetailsFragment" />
+</navigation>
