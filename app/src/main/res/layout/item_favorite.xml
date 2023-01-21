@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="data"
             type="com.example.masir.model.SingleUserObj" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
+        style="@style/ITEM"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/space_8"
-        style="@style/ITEM"
         app:cardCornerRadius="@dimen/space_8">
 
         <androidx.appcompat.widget.LinearLayoutCompat
@@ -27,147 +27,149 @@
                 android:id="@+id/iv_userCover"
                 android:layout_width="56dp"
                 android:layout_height="56dp"
-                android:layout_marginStart="@dimen/space_16"
                 android:layout_gravity="center_vertical"
                 android:layout_marginVertical="@dimen/space_16"
+                android:layout_marginStart="@dimen/space_16"
+                android:contentDescription="@string/this_is_description"
                 tools:src="@drawable/ic_outline_emoji_emotions_24" />
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingVertical="@dimen/space_8"
                 android:layout_gravity="center_vertical"
                 android:layout_marginHorizontal="@dimen/space_8"
                 android:layout_marginVertical="@dimen/space_8"
                 android:gravity="center_horizontal"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingVertical="@dimen/space_8">
 
                 <TextView
                     android:id="@+id/userNameTv"
+                    style="@style/TEXT"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    style="@style/TEXT"
-                    android:textSize="@dimen/textSize_14"
                     android:text="@{data.name}"
+                    android:textSize="@dimen/textSize_14"
                     android:textStyle="bold"
                     tools:text="IHasanAzimi" />
 
                 <TextView
                     android:id="@+id/locationTv"
+                    style="@style/TEXT"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:drawablePadding="@dimen/space_8"
                     android:gravity="center"
-                    style="@style/TEXT"
                     android:text="@{data.location}"
                     android:textSize="@dimen/textSize_12"
-                    tools:text="Tehran Province , Iran"
-                    app:drawableStartCompat="@drawable/ic_baseline_location_on_24" />
+                    app:drawableStartCompat="@drawable/ic_baseline_location_on_24"
+                    tools:text="Tehran Province , Iran" />
 
                 <TextView
                     android:id="@+id/organizeNameTv"
+                    style="@style/TEXT"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:drawablePadding="@dimen/space_8"
                     android:gravity="center"
-                    style="@style/TEXT"
                     android:text="@{data.company}"
                     android:textSize="@dimen/textSize_12"
-                    tools:text="Smart Land Solution"
-                    app:drawableStartCompat="@drawable/baseline_apartment_24" />
+                    app:drawableStartCompat="@drawable/baseline_apartment_24"
+                    tools:text="Smart Land Solution" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingVertical="@dimen/space_4"
                     android:layout_marginHorizontal="@dimen/space_8"
-                    android:orientation="horizontal">
+                    android:baselineAligned="false"
+                    android:orientation="horizontal"
+                    android:paddingVertical="@dimen/space_4">
 
                     <LinearLayout
                         android:layout_width="0dp"
-                        android:layout_weight="1"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:orientation="vertical">
 
                         <TextView
+                            style="@style/TEXT"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:textSize="@dimen/textSize_10"
-                            android:textStyle="bold"
-                            android:singleLine="true"
                             android:gravity="center"
-                            style="@style/TEXT"
-                            android:text="Follower"/>
+                            android:singleLine="true"
+                            android:text="@string/follower_title"
+                            android:textSize="@dimen/textSize_10"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/followerCountTv"
+                            style="@style/TEXT"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="@{data.followers()}"
                             android:textSize="@dimen/textSize_12"
                             android:textStyle="normal"
-                            android:text="@{data.followers()}"
-                            android:gravity="center"
-                            style="@style/TEXT"
-                            tools:text="38"/>
+                            tools:text="38" />
 
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="0dp"
-                        android:layout_weight="1"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:orientation="vertical">
 
                         <TextView
+                            style="@style/TEXT"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:textSize="@dimen/textSize_10"
-                            android:textStyle="bold"
                             android:gravity="center"
-                            style="@style/TEXT"
                             android:singleLine="true"
-                            android:text="Following"/>
+                            android:text="@string/following_title"
+                            android:textSize="@dimen/textSize_10"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/followingCountTv"
+                            style="@style/TEXT"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="@{data.following()}"
                             android:textSize="@dimen/textSize_12"
                             android:textStyle="normal"
-                            style="@style/TEXT"
-                            android:text="@{data.following()}"
-                            android:gravity="center"
-                            tools:text="38"/>
+                            tools:text="38" />
 
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="0dp"
-                        android:layout_weight="1"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:orientation="vertical">
 
                         <TextView
+                            style="@style/TEXT"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:textSize="@dimen/textSize_10"
-                            android:textStyle="bold"
                             android:gravity="center"
-                            style="@style/TEXT"
                             android:singleLine="true"
-                            android:text="Repository"/>
+                            android:text="@string/repository_title"
+                            android:textSize="@dimen/textSize_10"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/repositoryCountTv"
+                            style="@style/TEXT"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:textSize="@dimen/textSize_12"
-                            android:textStyle="normal"
-                            style="@style/TEXT"
                             android:gravity="center"
                             android:text="@{data.publicRepos()}"
-                            tools:text="38"/>
+                            android:textSize="@dimen/textSize_12"
+                            android:textStyle="normal"
+                            tools:text="38" />
 
                     </LinearLayout>
 

@@ -43,7 +43,7 @@
                     android:layout_marginHorizontal="@dimen/space_16"
                     android:contentDescription="@string/this_is_description"
                     android:gravity="center"
-                    android:text="Favorites"
+                    android:text="@string/favorites_btn_title"
                     android:textSize="@dimen/textSize_14"
                     android:textStyle="bold" />
 

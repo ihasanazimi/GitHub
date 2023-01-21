@@ -22,11 +22,17 @@ class FollowingFragment : BaseFragmentByVM<FragmentFollowerFollowingBinding, Fol
     var page = -1
     var userName = ""
 
+    companion object{
+        const val LOGIN_KEY = "LOGIN"
+        const val USERS_KEY = "USERS"
+        const val PAGE_KEY = "PAGE"
+    }
+
     fun newInstance(users: ArrayList<User>, page: Int , userName : String): FollowingFragment {
         val args = Bundle()
-        args.putString("login",userName)
-        args.putSerializable("data",users)
-        args.putInt("page",page)
+        args.putString(LOGIN_KEY,userName)
+        args.putSerializable(USERS_KEY,users)
+        args.putInt(PAGE_KEY,page)
         val fragment = FollowingFragment()
         fragment.arguments = args
         return fragment
@@ -38,9 +44,9 @@ class FollowingFragment : BaseFragmentByVM<FragmentFollowerFollowingBinding, Fol
         adapter = UsersAdapter(this)
         binding.recyclerView.adapter = adapter
 
-        users = requireArguments().getSerializable("data") as ArrayList<User>
-        page = requireArguments().getInt("page",1)
-        userName = requireArguments().getString("login","")
+        users = requireArguments().getSerializable(USERS_KEY) as ArrayList<User>
+        page = requireArguments().getInt(PAGE_KEY,1)
+        userName = requireArguments().getString(LOGIN_KEY,"")
         viewModel.putFollowingInLiveData(users)
 
         endlessListener = object : EndlessRecyclerViewScrollListener(binding.recyclerView.layoutManager!!) {

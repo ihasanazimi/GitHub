@@ -10,7 +10,6 @@ import com.example.masir.ApplicationLoader
 import com.example.masir.R
 import com.example.masir.databinding.ItemUserBinding
 import com.example.masir.model.User
-import com.example.masir.ui.main.feachers.user.details.follow_lists.UserDiffCallback
 import com.example.masir.utility.util.DiffUtilCallback
 
 class UsersAdapter(var callBack: OnUserCallBacks) : RecyclerView.Adapter<UsersAdapter.VH>() {

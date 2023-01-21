@@ -20,7 +20,6 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class MainFragment : BaseFragmentByVM<FragmentMainBinding, UsersVM>(), UsersAdapter.OnUserCallBacks {
     override val layoutId: Int get() = R.layout.fragment_main
     override val viewModel: UsersVM by viewModel()
-
     private lateinit var adapter : UsersAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -30,8 +29,8 @@ class MainFragment : BaseFragmentByVM<FragmentMainBinding, UsersVM>(), UsersAdap
 
         // change dark/light mode toggleMode
         lifecycleScope.launchWhenCreated {
-            if (KtPref.isDarkMode(KtPref.DARK_MODE) == false) binding.darkLightToggle.setChecked()
-            else binding.darkLightToggle.setUnchecked()
+            if (KtPref.isDarkMode(KtPref.DARK_MODE) == true) binding.darkLightToggle.setUnchecked()
+            else binding.darkLightToggle.setChecked()
         }
 
 
@@ -39,7 +38,7 @@ class MainFragment : BaseFragmentByVM<FragmentMainBinding, UsersVM>(), UsersAdap
             override fun onQueryTextSubmit(query: String): Boolean {
                 if (checkInternetConnection(requireContext())){
                     if (query.isNotEmpty()) viewModel.searchUser(query)
-                }else showToast(requireContext(),"NO Internet Connection..!")
+                }else showToast(requireContext(),getString(R.string.no_internet_connection))
                 return false
             }
             override fun onQueryTextChange(newText: String?): Boolean {

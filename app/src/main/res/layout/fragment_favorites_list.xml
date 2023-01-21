@@ -31,7 +31,7 @@
                     android:textStyle="bold"
                     android:textSize="@dimen/textSize_18"
                     android:contentDescription="@string/this_is_description"
-                    android:text="Favorites List"
+                    android:text="@string/favorites_list_title"
                     android:drawablePadding="@dimen/space_8"
                     app:drawableStartCompat="@drawable/baseline_arrow_back_24" />
 

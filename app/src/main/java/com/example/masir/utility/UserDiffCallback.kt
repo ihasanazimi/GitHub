@@ -1,4 +1,4 @@
-package com.example.masir.ui.main.feachers.user.details.follow_lists
+package com.example.masir.utility
 
 import androidx.recyclerview.widget.DiffUtil
 import com.example.masir.model.User

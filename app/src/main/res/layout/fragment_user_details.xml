@@ -149,7 +149,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
-                            android:paddingVertical="@dimen/space_8">
+                            android:paddingVertical="@dimen/space_8"
+                            android:baselineAligned="false">
 
                             <LinearLayout
                                 android:layout_width="0dp"
@@ -164,7 +165,7 @@
                                     android:gravity="center"
                                     android:paddingTop="@dimen/space_8"
                                     android:singleLine="true"
-                                    android:text="Follower"
+                                    android:text="@string/follower_title"
                                     android:textSize="@dimen/textSize_12"
                                     android:textStyle="bold" />
 
@@ -175,9 +176,9 @@
                                     android:layout_height="wrap_content"
                                     android:gravity="center"
                                     android:paddingVertical="@dimen/space_8"
-                                    android:text="38"
                                     android:textSize="@dimen/textSize_12"
-                                    android:textStyle="bold" />
+                                    android:textStyle="bold"
+                                    tools:text="38" />
 
                             </LinearLayout>
 
@@ -194,7 +195,7 @@
                                     android:gravity="center"
                                     android:paddingTop="@dimen/space_8"
                                     android:singleLine="true"
-                                    android:text="Following"
+                                    android:text="@string/following_title"
                                     android:textSize="@dimen/textSize_12"
                                     android:textStyle="bold" />
 
@@ -205,9 +206,9 @@
                                     android:layout_height="wrap_content"
                                     android:gravity="center"
                                     android:paddingVertical="@dimen/space_8"
-                                    android:text="38"
                                     android:textSize="@dimen/textSize_12"
-                                    android:textStyle="bold" />
+                                    android:textStyle="bold"
+                                    tools:text="38" />
 
                             </LinearLayout>
 
@@ -224,7 +225,7 @@
                                     android:gravity="center"
                                     android:paddingTop="@dimen/space_8"
                                     android:singleLine="true"
-                                    android:text="Repository"
+                                    android:text="@string/repository_title"
                                     android:textSize="@dimen/textSize_12"
                                     android:textStyle="bold" />
 
@@ -235,9 +236,9 @@
                                     android:layout_height="wrap_content"
                                     android:gravity="center"
                                     android:paddingVertical="@dimen/space_8"
-                                    android:text="38"
                                     android:textSize="@dimen/textSize_12"
-                                    android:textStyle="bold" />
+                                    android:textStyle="bold"
+                                    tools:text="38" />
 
                             </LinearLayout>
 
@@ -261,13 +262,13 @@
                     android:id="@+id/tab_followers"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Followers" />
+                    android:text="@string/follower_title" />
 
                 <com.google.android.material.tabs.TabItem
                     android:id="@+id/tab_following"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Following" />
+                    android:text="@string/following_title" />
 
             </com.google.android.material.tabs.TabLayout>
 

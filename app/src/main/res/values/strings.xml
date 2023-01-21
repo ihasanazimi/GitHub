@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">Github User</string>
     <string name="this_is_description">this is description</string>
+    <string name="no_internet_connection">NO Internet Connection..!</string>
+    <string name="favorites_list_title">Favorites List</string>
+    <string name="favorites_btn_title">Favorites</string>
+    <string name="follower_title">Follower</string>
+    <string name="following_title">Following</string>
+    <string name="repository_title">Repository</string>
 </resources>
