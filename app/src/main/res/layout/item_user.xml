@@ -13,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/space_4"
+        style="@style/ITEM"
         app:cardCornerRadius="@dimen/space_8">
 
         <androidx.appcompat.widget.LinearLayoutCompat
@@ -41,8 +42,8 @@
                     android:layout_height="wrap_content"
                     android:gravity="start|center_vertical"
                     android:text="@{data.login}"
-                    android:textColor="@color/black"
                     android:textSize="@dimen/textSize_16"
+                    style="@style/TEXT"
                     android:textStyle="bold"
                     tools:text="this is user name" />
 
@@ -52,7 +53,8 @@
                     android:layout_gravity="center_vertical"
                     android:gravity="start|center_vertical"
                     android:text="@{data.type}"
-                    android:textColor="@color/gary_darker"
+                    style="@style/TEXT"
+                    android:alpha="0.5"
                     android:textSize="@dimen/textSize_14"
                     tools:text="this is text sample" />
 

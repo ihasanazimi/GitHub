@@ -7,11 +7,12 @@
         android:id="@+id/rootContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/background_color"
+        style="@style/SCREEN"
         android:orientation="vertical">
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appBarLayout"
+            style="@style/AppBar_Style"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:liftOnScroll="true">
@@ -76,10 +77,10 @@
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="@dimen/space_8"
                         android:gravity="center"
+                        style="@style/AppBar_Style"
                         android:paddingHorizontal="@dimen/space_8"
                         android:paddingVertical="@dimen/space_4"
                         android:singleLine="true"
-                        android:textColor="@color/white"
                         android:textSize="@dimen/textSize_16"
                         android:textStyle="bold"
                         android:visibility="gone"
@@ -93,10 +94,10 @@
                         android:layout_gravity="center_horizontal"
                         android:alpha="0.8"
                         android:gravity="center"
+                        style="@style/AppBar_Style"
                         android:paddingHorizontal="@dimen/space_8"
                         android:paddingVertical="@dimen/space_4"
                         android:singleLine="true"
-                        android:textColor="@color/white"
                         android:textSize="@dimen/textSize_14"
                         android:visibility="gone"
                         tools:text="userName : ihasanazimi"
@@ -109,10 +110,10 @@
                         android:layout_gravity="center_horizontal"
                         android:alpha="0.6"
                         android:gravity="center"
+                        style="@style/AppBar_Style"
                         android:maxLines="3"
                         android:paddingHorizontal="@dimen/space_8"
                         android:paddingVertical="@dimen/space_4"
-                        android:textColor="@color/white"
                         android:textSize="@dimen/textSize_14"
                         android:visibility="gone"
                         tools:text="i am the android developer"
@@ -126,10 +127,10 @@
                         android:alpha="0.4"
                         android:drawablePadding="@dimen/space_8"
                         android:gravity="center"
+                        style="@style/AppBar_Style"
                         android:paddingHorizontal="@dimen/space_8"
                         android:paddingVertical="@dimen/space_4"
                         android:singleLine="true"
-                        android:textColor="@color/white"
                         android:textSize="@dimen/textSize_14"
                         android:visibility="gone"
                         app:drawableStartCompat="@drawable/ic_baseline_location_on_24"
@@ -147,6 +148,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
+                            style="@style/SCREEN"
                             android:paddingVertical="@dimen/space_8">
 
                             <LinearLayout
@@ -161,8 +163,8 @@
                                     android:gravity="center"
                                     android:paddingTop="@dimen/space_8"
                                     android:singleLine="true"
+                                    style="@style/TEXT"
                                     android:text="Follower"
-                                    android:textColor="@color/black"
                                     android:textSize="@dimen/textSize_12"
                                     android:textStyle="bold" />
 
@@ -173,7 +175,7 @@
                                     android:gravity="center"
                                     android:paddingVertical="@dimen/space_8"
                                     android:text="38"
-                                    android:textColor="@color/black"
+                                    style="@style/TEXT"
                                     android:textSize="@dimen/textSize_12"
                                     android:textStyle="bold" />
 
@@ -191,8 +193,8 @@
                                     android:gravity="center"
                                     android:paddingTop="@dimen/space_8"
                                     android:singleLine="true"
+                                    style="@style/TEXT"
                                     android:text="Following"
-                                    android:textColor="@color/black"
                                     android:textSize="@dimen/textSize_12"
                                     android:textStyle="bold" />
 
@@ -203,7 +205,7 @@
                                     android:gravity="center"
                                     android:paddingVertical="@dimen/space_8"
                                     android:text="38"
-                                    android:textColor="@color/black"
+                                    style="@style/TEXT"
                                     android:textSize="@dimen/textSize_12"
                                     android:textStyle="bold" />
 
@@ -222,7 +224,7 @@
                                     android:paddingTop="@dimen/space_8"
                                     android:singleLine="true"
                                     android:text="Repository"
-                                    android:textColor="@color/black"
+                                    style="@style/TEXT"
                                     android:textSize="@dimen/textSize_12"
                                     android:textStyle="bold" />
 
@@ -233,7 +235,7 @@
                                     android:gravity="center"
                                     android:paddingVertical="@dimen/space_8"
                                     android:text="38"
-                                    android:textColor="@color/black"
+                                    style="@style/TEXT"
                                     android:textSize="@dimen/textSize_12"
                                     android:textStyle="bold" />
 
@@ -252,6 +254,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_anchor="@+id/appBarLayout"
+                style="@style/SCREEN"
                 app:layout_anchorGravity="bottom|center">
 
                 <com.google.android.material.tabs.TabItem

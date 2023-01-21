@@ -6,12 +6,13 @@
         android:id="@+id/rootContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/background_color"
+        style="@style/SCREEN"
         android:orientation="vertical">
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:fitsSystemWindows="true"
+            style="@style/AppBar_Style"
             android:layout_height="wrap_content">
 
             <FrameLayout
@@ -53,7 +54,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/space_8"
-                android:layout_marginBottom="@dimen/space_8"
+                android:layout_marginBottom="@dimen/space_16"
+                style="@style/TEXT"
                 android:background="@drawable/stroke_input"
                 app:queryHint="search user..." />
 

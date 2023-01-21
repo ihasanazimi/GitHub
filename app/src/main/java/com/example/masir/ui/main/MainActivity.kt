@@ -7,8 +7,8 @@ import com.example.masir.utility.BaseActivity
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
     override val layoutId: Int get() = R.layout.activity_main
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
+
 }

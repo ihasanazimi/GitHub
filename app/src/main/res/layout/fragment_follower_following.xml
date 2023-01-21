@@ -7,7 +7,7 @@
         android:id="@+id/rootContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/background_color">
+        style="@style/SCREEN">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"

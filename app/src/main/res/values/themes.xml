@@ -3,14 +3,39 @@
     <style name="Theme.MyApplication" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/purple_500</item>
+        <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_700</item>
-        <item name="colorOnSecondary">@color/purple_500</item>
+        <item name="colorOnSecondary">@color/white</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor">@color/purple_700</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <!-- LIGHT MODE -->
+    <style name="SCREEN">
+        <item name="android:background">@color/background_color</item>
+    </style>
+
+    <style name="SPLASH">
+        <item name="android:background">@color/purple_500</item>
+    </style>
+
+    <style name="ITEM">
+        <item name="android:background">@color/white</item>
+    </style>
+
+    <style name="AppBar_Style">
+        <item name="android:background">@color/purple_500</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="TEXT">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="BUTTON">
+        <item name="android:background">@color/purple_500</item>
+    </style>
+
 </resources>

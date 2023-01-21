@@ -9,13 +9,9 @@ import com.example.masir.utility.BaseFragment
 import com.example.masir.utility.extentions.onBackClick
 
 class LoadingFragment : BaseFragment<LoadingBarBinding>() {
-    override val layoutId: Int
-        get() = R.layout.loading_bar
-
+    override val layoutId: Int get() = R.layout.loading_bar
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
         this.onBackClick { findNavController().navigateUp() }
     }
 }

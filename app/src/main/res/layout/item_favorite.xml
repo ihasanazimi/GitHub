@@ -14,6 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/space_8"
+        style="@style/ITEM"
         app:cardCornerRadius="@dimen/space_8">
 
         <androidx.appcompat.widget.LinearLayoutCompat
@@ -46,7 +47,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:textColor="@color/black"
+                    style="@style/TEXT"
                     android:textSize="@dimen/textSize_14"
                     android:text="@{data.name}"
                     android:textStyle="bold"
@@ -58,8 +59,8 @@
                     android:layout_height="wrap_content"
                     android:drawablePadding="@dimen/space_8"
                     android:gravity="center"
+                    style="@style/TEXT"
                     android:text="@{data.location}"
-                    android:textColor="@color/gary_darker"
                     android:textSize="@dimen/textSize_12"
                     tools:text="Tehran Province , Iran"
                     app:drawableStartCompat="@drawable/ic_baseline_location_on_24" />
@@ -70,8 +71,8 @@
                     android:layout_height="wrap_content"
                     android:drawablePadding="@dimen/space_8"
                     android:gravity="center"
+                    style="@style/TEXT"
                     android:text="@{data.company}"
-                    android:textColor="@color/gary_darker"
                     android:textSize="@dimen/textSize_12"
                     tools:text="Smart Land Solution"
                     app:drawableStartCompat="@drawable/baseline_apartment_24" />
@@ -96,7 +97,7 @@
                             android:textStyle="bold"
                             android:singleLine="true"
                             android:gravity="center"
-                            android:textColor="@color/black"
+                            style="@style/TEXT"
                             android:text="Follower"/>
 
                         <TextView
@@ -107,7 +108,7 @@
                             android:textStyle="normal"
                             android:text="@{data.followers()}"
                             android:gravity="center"
-                            android:textColor="@color/black"
+                            style="@style/TEXT"
                             tools:text="38"/>
 
                     </LinearLayout>
@@ -124,8 +125,8 @@
                             android:textSize="@dimen/textSize_10"
                             android:textStyle="bold"
                             android:gravity="center"
+                            style="@style/TEXT"
                             android:singleLine="true"
-                            android:textColor="@color/black"
                             android:text="Following"/>
 
                         <TextView
@@ -134,9 +135,9 @@
                             android:layout_height="wrap_content"
                             android:textSize="@dimen/textSize_12"
                             android:textStyle="normal"
+                            style="@style/TEXT"
                             android:text="@{data.following()}"
                             android:gravity="center"
-                            android:textColor="@color/black"
                             tools:text="38"/>
 
                     </LinearLayout>
@@ -153,8 +154,8 @@
                             android:textSize="@dimen/textSize_10"
                             android:textStyle="bold"
                             android:gravity="center"
+                            style="@style/TEXT"
                             android:singleLine="true"
-                            android:textColor="@color/black"
                             android:text="Repository"/>
 
                         <TextView
@@ -163,9 +164,9 @@
                             android:layout_height="wrap_content"
                             android:textSize="@dimen/textSize_12"
                             android:textStyle="normal"
+                            style="@style/TEXT"
                             android:gravity="center"
                             android:text="@{data.publicRepos()}"
-                            android:textColor="@color/black"
                             tools:text="38"/>
 
                     </LinearLayout>
