@@ -27,9 +27,10 @@ The android app lets you:
 - User Retrofit Lib And Gson Lib / Gson Converter
 - Use Koin (Dependency Injection)
 - DataPref (DataStore)
-- Extentions
+- Extensions
 - Live Event
 - Repository impl
+- Lazy Loading Options
 
 ## Screen
 
