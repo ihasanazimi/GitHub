@@ -9,11 +9,11 @@ import com.example.masir.services.http.Api
 class RemoteUserDataSourceImpl(private val api  : Api) : RemoteUserDataSource {
 
     override suspend fun getAllFollowersList(userName : String): List<User> {
-        return api.getAllUsers()
+        return api.getFollowersOfUser(userName)
     }
 
     override suspend fun getAllFollowingsList(userName : String): List<User> {
-        return api.getAllUsers()
+        return api.getFollowingOfUser(userName)
     }
 
     override suspend fun getAllRepoList(userName : String): List<GitHubRepositoryObj> {

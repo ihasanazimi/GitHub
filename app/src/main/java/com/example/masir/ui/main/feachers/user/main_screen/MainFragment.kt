@@ -7,15 +7,15 @@ import androidx.navigation.fragment.findNavController
 import com.example.masir.R
 import com.example.masir.databinding.FragmentMainBinding
 import com.example.masir.model.User
-import com.example.masir.ui.main.feachers.user.SharedUserVM
+import com.example.masir.ui.main.feachers.user.UsersVM
 import com.example.masir.ui.main.feachers.user.details.follow_lists.UserDetailsFragment
 import com.example.masir.utility.BaseFragmentByVM
 import com.example.masir.utility.extentions.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class MainFragment : BaseFragmentByVM<FragmentMainBinding, SharedUserVM>(), UsersAdapter.OnUserCallBacks {
+class MainFragment : BaseFragmentByVM<FragmentMainBinding, UsersVM>(), UsersAdapter.OnUserCallBacks {
     override val layoutId: Int get() = R.layout.fragment_main
-    override val viewModel: SharedUserVM by viewModel()
+    override val viewModel: UsersVM by viewModel()
 
     private lateinit var adapter : UsersAdapter
 

@@ -10,16 +10,16 @@ import com.example.masir.R
 import com.example.masir.databinding.FragmentUserDetailsBinding
 import com.example.masir.model.SingleUserObj
 import com.example.masir.model.User
-import com.example.masir.ui.main.feachers.user.SharedUserVM
+import com.example.masir.ui.main.feachers.user.UsersVM
 import com.example.masir.utility.BaseFragmentByVM
 import com.example.masir.utility.ToggleImageView
 import com.example.masir.utility.extentions.onBackClick
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class UserDetailsFragment : BaseFragmentByVM<FragmentUserDetailsBinding, SharedUserVM>(){
+class UserDetailsFragment : BaseFragmentByVM<FragmentUserDetailsBinding, UsersVM>(){
     override val layoutId: Int get() = R.layout.fragment_user_details
-    override val viewModel: SharedUserVM by viewModel()
+    override val viewModel: UsersVM by viewModel()
 
     companion object{
         const val LOGIN_KEY = "login_KEY"
@@ -32,12 +32,12 @@ class UserDetailsFragment : BaseFragmentByVM<FragmentUserDetailsBinding, SharedU
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         login = requireArguments().getString(LOGIN_KEY,"")
-        lifecycleScope.launch { viewModel.getUserDetails(login) }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        adapter = ViewPagerAdapter(requireActivity().supportFragmentManager,FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT)
+        lifecycleScope.launch { viewModel.getUserDetails(login) }
+        adapter = ViewPagerAdapter(childFragmentManager,FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT)
         binding.viewPager.adapter = adapter
         binding.tabLayout.setupWithViewPager(binding.viewPager)
         likeUiChange()
@@ -55,9 +55,10 @@ class UserDetailsFragment : BaseFragmentByVM<FragmentUserDetailsBinding, SharedU
 
         binding.toggleFavorites.addStateListener(object : ToggleImageView.OnStateChangedListener{
             override fun onChecked() {
-                if (targetUser != null)
+                if (targetUser != null) {
                     viewModel.addFavorite(targetUser!!)
-                viewModel.addFavoriteOnLiveData(targetUser!!)
+                    viewModel.addFavoriteOnLiveData(targetUser!!)
+                }
             }
 
             override fun onUnchecked() {
@@ -65,7 +66,6 @@ class UserDetailsFragment : BaseFragmentByVM<FragmentUserDetailsBinding, SharedU
                     viewModel.removeFavorite(targetUser!!)
                     viewModel.removeFavoriteOnLiveData(targetUser!!)
                 }
-
             }
         })
 
@@ -140,8 +140,6 @@ class UserDetailsFragment : BaseFragmentByVM<FragmentUserDetailsBinding, SharedU
         }
 
     }
-
-
 
 
 }

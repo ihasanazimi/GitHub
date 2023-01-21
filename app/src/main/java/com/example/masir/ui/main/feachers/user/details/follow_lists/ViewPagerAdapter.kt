@@ -3,8 +3,6 @@ package com.example.masir.ui.main.feachers.user.details.follow_lists
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import androidx.lifecycle.Lifecycle
-import com.example.masir.model.User
 
 class ViewPagerAdapter(fm: FragmentManager,behavior : Int) : FragmentPagerAdapter(fm,) {
 
@@ -14,6 +12,11 @@ class ViewPagerAdapter(fm: FragmentManager,behavior : Int) : FragmentPagerAdapte
     fun addFragment(fragment: Fragment , title :String){
         fragments.add(fragment)
         titles.add(title)
+        notifyDataSetChanged()
+    }
+
+    fun clearFragments(){
+        fragments.clear()
         notifyDataSetChanged()
     }
 

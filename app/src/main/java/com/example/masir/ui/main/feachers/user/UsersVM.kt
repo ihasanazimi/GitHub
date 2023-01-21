@@ -14,7 +14,7 @@ import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 
-class SharedUserVM(private val repository: UsersRepository) : BaseViewModel() {
+class UsersVM(private val repository: UsersRepository) : BaseViewModel() {
 
 
     var pageNumberFollowing = 1
