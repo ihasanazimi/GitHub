@@ -4,60 +4,65 @@
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/rootContainer"
+        style="@style/SCREEN"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        style="@style/SCREEN"
         android:orientation="vertical">
 
         <com.google.android.material.appbar.AppBarLayout
-            android:layout_width="match_parent"
-            android:fitsSystemWindows="true"
             style="@style/AppBar_Style"
-            android:layout_height="wrap_content">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true">
 
             <FrameLayout
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                app:layout_scrollFlags="scroll|enterAlways"
                 android:layout_height="?actionBarSize"
                 android:theme="@style/Theme.Material3.Dark"
+                app:layout_scrollFlags="scroll|enterAlways"
                 app:title="GitHub User">
 
                 <TextView
                     android:id="@+id/btn_back"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:gravity="center"
                     android:layout_gravity="start|center_vertical"
                     android:layout_marginHorizontal="@dimen/iconSize_24"
-                    android:textStyle="bold"
-                    android:textSize="@dimen/textSize_18"
                     android:contentDescription="@string/this_is_description"
-                    android:text="@string/app_name" />
+                    android:gravity="center"
+                    android:text="@string/app_name"
+                    android:textSize="@dimen/textSize_18"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/btn_favorites"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:gravity="center"
                     android:layout_gravity="end|center_vertical"
                     android:layout_marginHorizontal="@dimen/space_16"
-                    android:textStyle="bold"
-                    android:textSize="@dimen/textSize_14"
                     android:contentDescription="@string/this_is_description"
-                    android:text="Favorite" />
+                    android:gravity="center"
+                    android:text="Favorite"
+                    android:textSize="@dimen/textSize_14"
+                    android:textStyle="bold" />
 
             </FrameLayout>
 
-            <androidx.appcompat.widget.SearchView
-                android:id="@+id/searchView"
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/btnHeight_56"
                 android:layout_marginHorizontal="@dimen/space_8"
                 android:layout_marginBottom="@dimen/space_16"
-                style="@style/TEXT"
-                android:background="@drawable/stroke_input"
-                app:queryHint="search user..." />
+                app:cardCornerRadius="@dimen/space_8">
+
+                <androidx.appcompat.widget.SearchView
+                    android:id="@+id/searchView"
+                    style="@style/SEARCH_VIEW"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:queryHint="search user..." />
+            </com.google.android.material.card.MaterialCardView>
 
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -69,8 +74,8 @@
             android:orientation="vertical"
             android:paddingHorizontal="@dimen/space_4"
             android:paddingVertical="@dimen/space_8"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
             tools:listitem="@layout/item_user" />
 
         <ImageView

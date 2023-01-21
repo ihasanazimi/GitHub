@@ -39,5 +39,10 @@
         <item name="android:background">@color/teal_700</item>
     </style>
 
+    <style name="SEARCH_VIEW" parent="Widget.AppCompat.SearchView">
+        <!-- Gets rid of the search icon -->
+        <item name="searchIcon">@drawable/baseline_search_24</item>
+    </style>
+
 
 </resources>

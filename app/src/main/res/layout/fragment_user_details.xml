@@ -5,9 +5,9 @@
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/rootContainer"
+        style="@style/SCREEN"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        style="@style/SCREEN"
         android:orientation="vertical">
 
         <com.google.android.material.appbar.AppBarLayout
@@ -72,12 +72,12 @@
 
                     <TextView
                         android:id="@+id/tv_userFullName"
+                        style="@style/AppBar_Style"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="@dimen/space_8"
                         android:gravity="center"
-                        style="@style/AppBar_Style"
                         android:paddingHorizontal="@dimen/space_8"
                         android:paddingVertical="@dimen/space_4"
                         android:singleLine="true"
@@ -89,12 +89,12 @@
 
                     <TextView
                         android:id="@+id/tv_userName"
+                        style="@style/AppBar_Style"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
                         android:alpha="0.8"
                         android:gravity="center"
-                        style="@style/AppBar_Style"
                         android:paddingHorizontal="@dimen/space_8"
                         android:paddingVertical="@dimen/space_4"
                         android:singleLine="true"
@@ -105,12 +105,12 @@
 
                     <TextView
                         android:id="@+id/tv_bio"
+                        style="@style/AppBar_Style"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
                         android:alpha="0.6"
                         android:gravity="center"
-                        style="@style/AppBar_Style"
                         android:maxLines="3"
                         android:paddingHorizontal="@dimen/space_8"
                         android:paddingVertical="@dimen/space_4"
@@ -121,13 +121,13 @@
 
                     <TextView
                         android:id="@+id/tv_location"
+                        style="@style/AppBar_Style"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
                         android:alpha="0.4"
                         android:drawablePadding="@dimen/space_8"
                         android:gravity="center"
-                        style="@style/AppBar_Style"
                         android:paddingHorizontal="@dimen/space_8"
                         android:paddingVertical="@dimen/space_4"
                         android:singleLine="true"
@@ -141,14 +141,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="@dimen/space_32"
-                        android:layout_marginTop="@dimen/textSize_16"
+                        android:layout_marginVertical="@dimen/space_16"
                         app:cardCornerRadius="@dimen/space_16">
 
                         <LinearLayout
+                            style="@style/SCREEN"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
-                            style="@style/SCREEN"
                             android:paddingVertical="@dimen/space_8">
 
                             <LinearLayout
@@ -158,24 +158,24 @@
                                 android:orientation="vertical">
 
                                 <TextView
+                                    style="@style/TEXT"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:gravity="center"
                                     android:paddingTop="@dimen/space_8"
                                     android:singleLine="true"
-                                    style="@style/TEXT"
                                     android:text="Follower"
                                     android:textSize="@dimen/textSize_12"
                                     android:textStyle="bold" />
 
                                 <TextView
                                     android:id="@+id/followerCountTv"
+                                    style="@style/TEXT"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:gravity="center"
                                     android:paddingVertical="@dimen/space_8"
                                     android:text="38"
-                                    style="@style/TEXT"
                                     android:textSize="@dimen/textSize_12"
                                     android:textStyle="bold" />
 
@@ -188,24 +188,24 @@
                                 android:orientation="vertical">
 
                                 <TextView
+                                    style="@style/TEXT"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:gravity="center"
                                     android:paddingTop="@dimen/space_8"
                                     android:singleLine="true"
-                                    style="@style/TEXT"
                                     android:text="Following"
                                     android:textSize="@dimen/textSize_12"
                                     android:textStyle="bold" />
 
                                 <TextView
                                     android:id="@+id/followingCountTv"
+                                    style="@style/TEXT"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:gravity="center"
                                     android:paddingVertical="@dimen/space_8"
                                     android:text="38"
-                                    style="@style/TEXT"
                                     android:textSize="@dimen/textSize_12"
                                     android:textStyle="bold" />
 
@@ -218,24 +218,24 @@
                                 android:orientation="vertical">
 
                                 <TextView
+                                    style="@style/TEXT"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:gravity="center"
                                     android:paddingTop="@dimen/space_8"
                                     android:singleLine="true"
                                     android:text="Repository"
-                                    style="@style/TEXT"
                                     android:textSize="@dimen/textSize_12"
                                     android:textStyle="bold" />
 
                                 <TextView
                                     android:id="@+id/repositoryCountTv"
+                                    style="@style/TEXT"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:gravity="center"
                                     android:paddingVertical="@dimen/space_8"
                                     android:text="38"
-                                    style="@style/TEXT"
                                     android:textSize="@dimen/textSize_12"
                                     android:textStyle="bold" />
 
@@ -251,10 +251,10 @@
 
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tabLayout"
+                style="@style/SCREEN"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_anchor="@+id/appBarLayout"
-                style="@style/SCREEN"
                 app:layout_anchorGravity="bottom|center">
 
                 <com.google.android.material.tabs.TabItem
@@ -277,8 +277,8 @@
             android:id="@+id/viewPager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            android:nestedScrollingEnabled="true" />
+            android:nestedScrollingEnabled="true"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
