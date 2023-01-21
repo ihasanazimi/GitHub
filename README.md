@@ -2,9 +2,12 @@
 
 ## About Application
 
-This application helps you to get detailed information about users' followers and followers, in addition to users' repositories, by searching for people with their GitHub username.
+This application helps you to get detailed information about users' followers and followers, in
+addition to users' repositories, by searching for people with their GitHub username.
 More detailed details are related to the list of followers and followers in full
-You can easily have the user's profile information, including the bio and the company the user works for, along with the name of the user's city and username, and you can even add users to the list of favorite users.
+You can easily have the user's profile information, including the bio and the company the user works
+for, along with the name of the user's city and username, and you can even add users to the list of
+favorite users.
 
 ## Features
 
@@ -39,7 +42,7 @@ https://user-images.githubusercontent.com/65872053/213865470-0595ff29-3c0c-45f6-
 
 ## Permissions
 
-On Android versions prior to Android 6.0, EbcomApp requires the following permissions:
+On Android versions prior to Android 6.0, github App requires the following permissions:
 
 - Full Network Access.
 - View Network Connections.
