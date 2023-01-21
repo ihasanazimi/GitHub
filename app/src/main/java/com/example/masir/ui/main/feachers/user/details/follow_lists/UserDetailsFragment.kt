@@ -57,12 +57,14 @@ class UserDetailsFragment : BaseFragmentByVM<FragmentUserDetailsBinding, UsersVM
             override fun onChecked() {
                 if (targetUser != null) {
                     viewModel.addFavorite(targetUser!!)
+                    viewModel.addFavoriteOnLiveData(targetUser!!)
                 }
             }
 
             override fun onUnchecked() {
                 if (targetUser != null){
                     viewModel.removeFavorite(targetUser!!)
+                    viewModel.removeFavoriteOnLiveData(targetUser!!)
                 }
             }
         })

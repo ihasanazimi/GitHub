@@ -28,6 +28,7 @@ class FavoritesListFragment : BaseFragmentByVM<FragmentFavoritesListBinding, Use
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        adapter.clearList()
         binding.recyclerView.adapter = adapter
         viewModel.getAllFavoritesList(0)
         this.onBackClick { findNavController().navigateUp() }
