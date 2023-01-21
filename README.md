@@ -34,7 +34,8 @@ The android app lets you:
 
 ## Screen
 
-https://user-images.githubusercontent.com/65872053/212748792-31bdfab4-8158-499e-b28e-9f9bfd243052.mp4
+https://user-images.githubusercontent.com/65872053/213865470-0595ff29-3c0c-45f6-9799-4fbbb7c5a54d.mp4
+
 
 ## Permissions
 
