@@ -21,22 +21,22 @@ class MainFragment : BaseFragmentByVM<FragmentMainBinding, UsersVM>(), UsersAdap
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         recyclerViewConfig()
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
-
             override fun onQueryTextSubmit(query: String): Boolean {
                 if (checkInternetConnection(requireContext())){
                     if (query.isNotEmpty()) viewModel.searchUser(query)
                 }else showToast(requireContext(),"NO Internet Connection..!")
                 return false
             }
-
             override fun onQueryTextChange(newText: String?): Boolean {
                 adapter.clearList()
                 viewModel.stopLoading()
                 return false
             }
         })
+
         this.onBackClick { mainHelper.finish() }
     }
 

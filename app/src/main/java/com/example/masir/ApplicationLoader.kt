@@ -9,6 +9,7 @@ import com.example.masir.repository.data_source.local.LocalUserDataSourceImpl
 import com.example.masir.repository.data_source.remote.RemoteUserDataSourceImpl
 import com.example.masir.services.http.ApiService
 import com.example.masir.ui.main.feachers.user.UsersVM
+import com.example.masir.ui.main.feachers.user.details.follow_lists.FollowVM
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import org.koin.dsl.module
@@ -36,6 +37,7 @@ class ApplicationLoader : Application() {
             single { ApiService().api }
             single { RoomDB.getDataBase(this@ApplicationLoader) }
             factory { UsersVM(UserRepositoryImpl(RemoteUserDataSourceImpl(get()), LocalUserDataSourceImpl(get()))) }
+            factory { FollowVM(UserRepositoryImpl(RemoteUserDataSourceImpl(get()), LocalUserDataSourceImpl(get()))) }
         }
 
         /** 2- Start Coin By Modules... */

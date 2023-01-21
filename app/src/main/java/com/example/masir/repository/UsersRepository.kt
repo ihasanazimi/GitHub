@@ -7,9 +7,8 @@ import com.example.masir.model.User
 
 interface UsersRepository {
 
-    suspend fun getAllFollowersList(userName : String): List<User>
-    suspend fun getAllFollowingsList(userName : String): List<User>
-    suspend fun getAllRepoList(userName : String): List<GitHubRepositoryObj>
+    suspend fun getAllFollowersList(userName : String , page: Int): List<User>
+    suspend fun getAllFollowingsList(userName : String , page: Int): List<User>
     fun getFavoritesList(page : Int) : List<SingleUserObj>
     suspend fun getSingleUser(login: String) : SingleUserObj
     suspend fun getSingleUserExist(login: String) : SingleUserObj

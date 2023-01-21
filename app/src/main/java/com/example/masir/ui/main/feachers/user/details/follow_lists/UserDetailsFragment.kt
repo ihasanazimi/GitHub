@@ -78,11 +78,11 @@ class UserDetailsFragment : BaseFragmentByVM<FragmentUserDetailsBinding, UsersVM
         super.registerObservers()
 
         viewModel.targetUserFollowers.observe(viewLifecycleOwner){
-            adapter.addFragment(FollowListFragment().newInstance(it as ArrayList<User>, viewModel.pageNumberFollowing),"Follower")
+            adapter.addFragment(FollowersFragment().newInstance(it as ArrayList<User>, viewModel.pageNumber,login),"Follower")
         }
 
         viewModel.targetUserFollowing.observe(viewLifecycleOwner){
-            adapter.addFragment(FollowListFragment().newInstance(it as ArrayList<User>, viewModel.pageNumberFollowers),"Following")
+            adapter.addFragment(FollowingFragment().newInstance(it as ArrayList<User>, viewModel.pageNumber,login),"Following")
         }
 
         viewModel.singleUser.observe(viewLifecycleOwner){

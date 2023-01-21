@@ -10,17 +10,14 @@ import kotlin.math.log
 
 class UserRepositoryImpl(private val remoteRepo : RemoteUserDataSourceImpl, private val localRepo : LocalUserDataSourceImpl) : UsersRepository {
 
-    override suspend fun getAllFollowersList(userName : String): List<User> {
-        return remoteRepo.getAllFollowersList(userName)
+    override suspend fun getAllFollowersList(userName : String , page: Int): List<User> {
+        return remoteRepo.getAllFollowersList(userName,page)
     }
 
-    override suspend fun getAllFollowingsList(userName : String): List<User> {
-        return remoteRepo.getAllFollowingsList(userName)
+    override suspend fun getAllFollowingsList(userName : String , page: Int): List<User> {
+        return remoteRepo.getAllFollowingsList(userName,page)
     }
 
-    override suspend fun getAllRepoList(userName: String): List<GitHubRepositoryObj> {
-        return remoteRepo.getAllRepoList(userName)
-    }
 
     override fun getFavoritesList(page : Int): List<SingleUserObj> {
         return localRepo.getFavoritesList(page)

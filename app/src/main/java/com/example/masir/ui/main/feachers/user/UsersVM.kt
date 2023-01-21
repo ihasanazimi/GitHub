@@ -16,19 +16,16 @@ import kotlinx.coroutines.launch
 
 class UsersVM(private val repository: UsersRepository) : BaseViewModel() {
 
-
-    var pageNumberFollowing = 1
-    var pageNumberFollowers = 1
+    var pageNumber = 1
 
     private val coroutineExceptionHandler = CoroutineExceptionHandler { _, throwable ->
         errorLiveData.postValue(arrayListOf(throwable.message.toString()))
         showProgress.value = false
-        Log.e("SharedUserVM", throwable.message.toString())
+        Log.e("UserVM", throwable.message.toString())
     }
 
 
-    private val _foundUsers = MutableLiveData<SearchResultWidget>()
-    val foundUsers = _foundUsers.toEvent()
+    val foundUsers = MutableLiveData<SearchResultWidget>()
 
     val singleUser = MutableLiveData<SingleUserObj>()
 
@@ -38,9 +35,6 @@ class UsersVM(private val repository: UsersRepository) : BaseViewModel() {
     private val _targetUserFollowing = MutableLiveData<List<User>>()
     val targetUserFollowing = _targetUserFollowing.toEvent()
 
-    private val _targetUserRepo = MutableLiveData<List<GitHubRepositoryObj>>()
-    val targetUserRepo = _targetUserRepo.toEvent()
-
     val favoritesList = MutableLiveData<List<SingleUserObj>>()
 
 
@@ -48,7 +42,7 @@ class UsersVM(private val repository: UsersRepository) : BaseViewModel() {
         showProgress.value = true
         viewModelScope.launch(coroutineExceptionHandler) {
             val result = repository.searchUser(userName)
-            _foundUsers.value = result
+            foundUsers.value = result
             showProgress.value = false
         }
     }
@@ -57,19 +51,16 @@ class UsersVM(private val repository: UsersRepository) : BaseViewModel() {
         showProgress.value = true
         viewModelScope.launch(coroutineExceptionHandler)  {
 
-            val followersResult = async { repository.getAllFollowersList(userName) }
-            val followingResult = async { repository.getAllFollowingsList(userName) }
-            val repositoryResult = async { repository.getAllRepoList(userName) }
+            val followersResult = async { repository.getAllFollowersList(userName,1) }
+            val followingResult = async { repository.getAllFollowingsList(userName,1) }
             val userResult = async { repository.getSingleUser(userName) }
 
             val followers = followersResult.await()
             val following = followingResult.await()
-            val repository = repositoryResult.await()
             val user = userResult.await()
 
             _targetUserFollowers.value = followers
             _targetUserFollowing.value = following
-            _targetUserRepo.value = repository
             singleUser.value = user
 
             showProgress.value = false
@@ -88,8 +79,10 @@ class UsersVM(private val repository: UsersRepository) : BaseViewModel() {
     fun getAllFollowerOfUser(userName : String){
         showProgress.value = false
         viewModelScope.launch(coroutineExceptionHandler)  {
-            val followersList = repository.getAllFollowersList(userName)
-            _targetUserFollowers.value = followersList
+            val followersList = repository.getAllFollowersList(userName,pageNumber)
+            val temps = _targetUserFollowers.value?.toMutableList()
+            temps?.addAll(followersList)
+            _targetUserFollowers.value = temps!!
             showProgress.value = false
         }
     }
@@ -97,17 +90,8 @@ class UsersVM(private val repository: UsersRepository) : BaseViewModel() {
     fun getAllFollowingOfUser(userName : String){
         showProgress.value = true
         viewModelScope.launch(coroutineExceptionHandler)  {
-            val followingList = repository.getAllFollowingsList(userName)
+            val followingList = repository.getAllFollowingsList(userName,pageNumber)
             _targetUserFollowing.value = followingList
-            showProgress.value = false
-        }
-    }
-
-    fun getAllRepoOfUser(userName : String){
-        showProgress.value = true
-        viewModelScope.launch(coroutineExceptionHandler)  {
-            val repoList = repository.getAllRepoList(userName)
-            _targetUserRepo.value = repoList
             showProgress.value = false
         }
     }
