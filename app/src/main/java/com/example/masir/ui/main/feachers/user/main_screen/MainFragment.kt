@@ -3,14 +3,18 @@ package com.example.masir.ui.main.feachers.user.main_screen
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.widget.SearchView
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.masir.R
 import com.example.masir.databinding.FragmentMainBinding
+import com.example.masir.db.KtPref
 import com.example.masir.model.User
 import com.example.masir.ui.main.feachers.user.UsersVM
 import com.example.masir.ui.main.feachers.user.details.follow_lists.UserDetailsFragment
 import com.example.masir.utility.BaseFragmentByVM
+import com.example.masir.utility.ToggleImageView
 import com.example.masir.utility.extentions.*
+import ir.ha.practice.utility.util.ThemeUtils
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainFragment : BaseFragmentByVM<FragmentMainBinding, UsersVM>(), UsersAdapter.OnUserCallBacks {
@@ -23,6 +27,14 @@ class MainFragment : BaseFragmentByVM<FragmentMainBinding, UsersVM>(), UsersAdap
         super.onViewCreated(view, savedInstanceState)
 
         recyclerViewConfig()
+
+        // change dark/light mode toggleMode
+        lifecycleScope.launchWhenCreated {
+            if (KtPref.isDarkMode(KtPref.DARK_MODE) == false) binding.darkLightToggle.setChecked()
+            else binding.darkLightToggle.setUnchecked()
+        }
+
+
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String): Boolean {
                 if (checkInternetConnection(requireContext())){
@@ -53,6 +65,22 @@ class MainFragment : BaseFragmentByVM<FragmentMainBinding, UsersVM>(), UsersAdap
             viewModel.stopLoading()
             return@setOnCloseListener false
         }
+
+        binding.darkLightToggle.addStateListener(object : ToggleImageView.OnStateChangedListener{
+            override fun onChecked() {
+                lifecycleScope.launchWhenCreated {
+                    ThemeUtils.changeTheme(true)
+                    KtPref.saveTheme(KtPref.DARK_MODE,false)
+                }
+            }
+
+            override fun onUnchecked() {
+                lifecycleScope.launchWhenCreated {
+                    ThemeUtils.changeTheme(false)
+                    KtPref.saveTheme(KtPref.DARK_MODE,true)
+                }
+            }
+        })
 
         binding.btnFavorites.setOnClickListener{ findNavController().navigate(R.id.action_mainFragment_to_favoritesListFragment) }
     }

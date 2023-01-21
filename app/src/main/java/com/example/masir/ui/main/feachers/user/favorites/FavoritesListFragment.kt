@@ -18,7 +18,6 @@ class FavoritesListFragment : BaseFragmentByVM<FragmentFavoritesListBinding, Use
     FavoriteUsersAdapter.OnUserCallBacks {
     override val layoutId: Int get() = R.layout.fragment_favorites_list
     override val viewModel: UsersVM by viewModel()
-
     private lateinit var adapter : FavoriteUsersAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -20,7 +20,6 @@ class ViewPagerAdapter(fm: FragmentManager,behavior : Int) : FragmentPagerAdapte
         notifyDataSetChanged()
     }
 
-
     override fun getCount(): Int {
         return fragments.size
     }
@@ -28,7 +27,6 @@ class ViewPagerAdapter(fm: FragmentManager,behavior : Int) : FragmentPagerAdapte
     override fun getItem(position: Int): Fragment {
         return fragments[position]
     }
-
 
     override fun getPageTitle(position: Int): CharSequence {
         return titles[position]

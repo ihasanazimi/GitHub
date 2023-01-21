@@ -87,6 +87,19 @@
             android:contentDescription="@string/this_is_description"
             android:src="@drawable/ic_not_found_24" />
 
+        <com.example.masir.utility.ToggleImageView
+            android:id="@+id/dark_light_toggle"
+            android:layout_width="@dimen/space_64"
+            android:layout_height="@dimen/space_64"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/iconSize_24"
+            android:background="@drawable/circle"
+            android:backgroundTint="@color/gary_very_darker"
+            android:elevation="@dimen/space_4"
+            android:padding="@dimen/space_16"
+            app:src_checked="@drawable/baseline_light_mode_24"
+            app:src_unchecked="@drawable/baseline_dark_mode_24" />
+
 
         <ProgressBar
             android:id="@+id/progressBar"
@@ -94,6 +107,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:visibility="gone" />
+
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

@@ -11,13 +11,13 @@ import com.example.masir.utility.BaseFragmentByVM
 import com.example.masir.utility.EndlessRecyclerViewScrollListener
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class FollowersFragment : BaseFragmentByVM<FragmentFollowerFollowingBinding, FollowVM>(),
-    UsersAdapter.OnUserCallBacks {
+class FollowersFragment : BaseFragmentByVM<FragmentFollowerFollowingBinding, FollowVM>(), UsersAdapter.OnUserCallBacks {
     override val layoutId: Int get() = R.layout.fragment_follower_following
     override val viewModel: FollowVM by viewModel()
 
     private lateinit var adapter : UsersAdapter
     private lateinit var endlessListener: EndlessRecyclerViewScrollListener
+
     var users : ArrayList<User> = arrayListOf()
     var page = -1
     var userName = ""
@@ -50,21 +50,12 @@ class FollowersFragment : BaseFragmentByVM<FragmentFollowerFollowingBinding, Fol
                 }
             }
         binding.recyclerView.addOnScrollListener(endlessListener)
-
     }
-
 
     override fun registerObservers() {
         super.registerObservers()
-
-        viewModel.followers.observe(viewLifecycleOwner){
-            adapter.setItemByDiffUtil(it)
-        }
-
-        viewModel.showProgress.observe(viewLifecycleOwner){
-            binding.progressBar.visibility = if (it) View.VISIBLE else View.GONE
-        }
-
+        viewModel.followers.observe(viewLifecycleOwner){ adapter.setItemByDiffUtil(it) }
+        viewModel.showProgress.observe(viewLifecycleOwner){ binding.progressBar.visibility = if (it) View.VISIBLE else View.GONE }
     }
 
     override fun onItemClick(model: User) { /* your code */ }
